@@ -1,0 +1,1 @@
+export { findPosts } from "./post";
