@@ -10,7 +10,6 @@ export const setPosts = (payload) => {
 
 export const findPosts = () => {
     return async (dispatch) => {
-
         try {
             const response = await axios.get("post");
             if (response.status === 200 && response.data.length > 0)
