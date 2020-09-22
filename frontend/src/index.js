@@ -19,7 +19,7 @@ const reducers = combineReducers({
   ...appReducers
 })
 
-const store = createStore(reducers, applyMiddleware(logger, thunk));
+const store = createStore(reducers, applyMiddleware(thunk, logger));
 
 const app = (
   <Provider store={store}>
