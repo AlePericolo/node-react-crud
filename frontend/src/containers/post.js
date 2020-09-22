@@ -15,10 +15,12 @@ class Post extends Component {
             <div className="container-fluid bg-success">
                 <h3>Post</h3>
                 <ul>
-                    {posts.map((item, index) => {
-                        <li key={index}>
-                            {item.title}
-                        </li>
+                    {this.props.posts.map((item, index) => {
+                        return (
+                            <li key={index}>
+                                {item.title}
+                            </li>
+                        )
                     })}
                 </ul>
             </div>
@@ -29,7 +31,7 @@ class Post extends Component {
 
 const mapStatetoProps = (state) => {
     return {
-        post: state.post
+        posts: state.post.list
     }
 }
 
