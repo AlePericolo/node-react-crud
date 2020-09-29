@@ -5,8 +5,6 @@ import Footer from "../partials/footer";
 
 const layout = (props) => {
 
-    console.log(props);
-
     return (
         <>
             <Header />

@@ -2,7 +2,9 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { findPosts } from "../store/actions";
 
-class Post extends Component {
+import Post from "../components/post.js"
+
+class Posts extends Component {
 
     componentDidMount() {
         this.props.onFindPosts()
@@ -12,17 +14,15 @@ class Post extends Component {
 
         return (
 
-            <div className="container-fluid bg-success">
-                <h3>Post</h3>
-                <ul>
-                    {this.props.posts.map((item, index) => {
+            <div className="container h-100 py-5">
+                <h1>Posts</h1>
+                <div className="row">
+                    {this.props.posts.map((item) => {
                         return (
-                            <li key={index}>
-                                {item.title}
-                            </li>
+                            <Post key={item._id} post={item} />
                         )
                     })}
-                </ul>
+                </div>
             </div>
 
         );
@@ -41,4 +41,4 @@ const mapDispatchToProps = (dispatch) => {
     };
 };
 
-export default connect(mapStatetoProps, mapDispatchToProps)(Post);
+export default connect(mapStatetoProps, mapDispatchToProps)(Posts);
