@@ -7,7 +7,7 @@ import Post from "../components/post.js"
 class Posts extends Component {
 
     componentDidMount() {
-        this.props.onFindPosts()
+        this.props.findPosts()
     }
 
     render() {
@@ -37,7 +37,7 @@ const mapStatetoProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onFindPosts: () => dispatch(findPosts())
+        findPosts: () => dispatch(findPosts())
     };
 };
 

@@ -11,6 +11,11 @@ const postRoutes = [
         method: 'POST',
         url: '/post',
         handler: postController.createPost
+    },
+    {
+        method: 'POST',
+        url: '/delete-post',
+        handler: postController.deletePost
     }
 
 ]

@@ -3,6 +3,12 @@ import * as actionTypes from "../actions/actionTypes";
 const initialState = {
     post: {
         list: []
+    },
+    modal: {
+        modalType: null,
+        modalProps: {
+            open: false
+        }
     }
 };
 
@@ -18,4 +24,19 @@ const post = (state = initialState.post, action) => {
     }
 }
 
-export default { post };
+const modal = (state = initialState.modal, action) => {
+    switch (action.type) {
+        case actionTypes.SHOW_MODAL:
+            return {
+                modalProps: action.modalProps,
+                modalType: action.modalType,
+                type: action.type
+            }
+        case actionTypes.HIDE_MODAL:
+            return initialState.modal
+        default:
+            return state
+    }
+}
+
+export default { post, modal };

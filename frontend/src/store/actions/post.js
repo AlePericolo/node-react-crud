@@ -1,6 +1,8 @@
 import * as actionTypes from "./actionTypes";
 import axios from "./_axios";
 
+import { showModal, hideModal } from "./modal"
+
 export const setPosts = (payload) => {
     return {
         type: actionTypes.SET_POSTS,
@@ -22,3 +24,30 @@ export const findPosts = () => {
         }
     };
 };
+
+export const deletePost = (id) => {
+    return async (dispatch) => {
+        try {
+            const response = await axios.post("delete-post", { 'id': id });
+            if (response.status === 200) {
+                dispatch(hideModal())
+                dispatch(findPosts())
+            } else {
+                dispatch(showModal({
+                    open: true,
+                    title: 'Attention',
+                    message: 'Post not deleted',
+                    closeModal: () => hideModal()
+                }, 'alert'));
+            }
+        } catch (e) {
+            console.log('Exception deletePost', e);
+            dispatch(showModal({
+                open: true,
+                title: 'Warning',
+                message: e.toString(),
+                closeModal: () => hideModal()
+            }, 'alert'));
+        }
+    };
+}

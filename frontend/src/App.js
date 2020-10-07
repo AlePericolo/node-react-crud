@@ -3,7 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 
 import Layout from "./containers/layout";
 import Dashboard from "./containers/dashboard";
-import Posts from "./containers/post";
+import Posts from "./containers/posts";
 
 class App extends Component {
 
