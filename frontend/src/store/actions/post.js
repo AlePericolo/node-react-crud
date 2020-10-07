@@ -1,6 +1,7 @@
 import * as actionTypes from "./actionTypes";
 import axios from "./_axios";
 
+import { isLoading } from "./load"
 import { showModal, hideModal } from "./modal"
 
 export const setPosts = (payload) => {
@@ -12,6 +13,7 @@ export const setPosts = (payload) => {
 
 export const findPosts = () => {
     return async (dispatch) => {
+        dispatch(isLoading(true));
         try {
             const response = await axios.get("post");
             if (response.status === 200 && response.data.length > 0)
@@ -22,6 +24,7 @@ export const findPosts = () => {
             console.log('Exception findPosts', e);
             dispatch(setPosts([]));
         }
+        dispatch(isLoading(false));
     };
 };
 

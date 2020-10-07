@@ -3,7 +3,8 @@ import { Route, Switch } from 'react-router-dom';
 
 import Layout from "./containers/layout";
 import Dashboard from "./containers/dashboard";
-import Posts from "./containers/posts";
+
+import postRoutes from "./routes/post";
 
 class App extends Component {
 
@@ -12,7 +13,7 @@ class App extends Component {
       <div>
         <Layout>
           <Switch>
-            <Route path="/posts" component={Posts} />
+            {postRoutes}
             <Route path="/" exact component={Dashboard} />
           </Switch>
         </Layout>

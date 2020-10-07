@@ -1,6 +1,9 @@
 import * as actionTypes from "../actions/actionTypes";
 
 const initialState = {
+    load: {
+        isLoading: false
+    },
     post: {
         list: []
     },
@@ -11,6 +14,18 @@ const initialState = {
         }
     }
 };
+
+const load = (state = initialState.load, action) => {
+    switch (action.type) {
+        case actionTypes.SET_LOADING:
+            return {
+                ...state,
+                isLoading: action.payload,
+            };
+        default:
+            return state;
+    }
+}
 
 const post = (state = initialState.post, action) => {
     switch (action.type) {
@@ -39,4 +54,4 @@ const modal = (state = initialState.modal, action) => {
     }
 }
 
-export default { post, modal };
+export default { load, post, modal };

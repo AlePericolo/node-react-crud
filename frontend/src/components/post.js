@@ -17,6 +17,9 @@ const post = (props) => {
             deleteAction: () => { props.deletePost(post._id) }
         }, 'delete');
     }
+    const editPost = (post) => {
+        console.log(post);
+    }
 
     return (
         <>
@@ -28,6 +31,9 @@ const post = (props) => {
                     </div>
                     <div className="card-footer">
                         <button type="button" className="btn btn-outline-danger" onClick={() => deletePost(props.post)}>
+                            <BsFillTrashFill />
+                        </button>
+                        <button type="button" className="btn btn-outline-warning" onClick={() => editPost(props.post)}>
                             <BsFillTrashFill />
                         </button>
                     </div>
