@@ -10,9 +10,18 @@ exports.getPosts = async (req, res) => {
     }
 }
 
+exports.getPost = (req, res) => {
+    Post.findById(req.body.id, (err, data) => {
+        if (err) return res.status(500).send(err.message);
+
+        console.log(data);
+        return res.status(200).send(data);
+    })
+}
+
 exports.deletePost = (req, res) => {
     Post.findByIdAndRemove(req.body.id, (err, data) => {
-        if (err) return res.status(500).send(err);
+        if (err) return res.status(500).send(err.message);
 
         return res.status(200).send({ message: "post deleted" });
     });

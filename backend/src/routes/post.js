@@ -9,6 +9,11 @@ const postRoutes = [
     },
     {
         method: 'POST',
+        url: '/get-post',
+        handler: postController.getPost
+    },
+    {
+        method: 'POST',
         url: '/post',
         handler: postController.createPost
     },

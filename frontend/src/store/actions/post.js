@@ -28,6 +28,17 @@ export const findPosts = () => {
     };
 };
 
+export const getPost = (id) => {
+    return async (dispatch) => {
+        try {
+            const response = await axios.post("get-post", { 'id': id });
+            console.log("getpost => ", response);
+        } catch (e) {
+            console.log('Exception getPost', e);
+        }
+    }
+}
+
 export const deletePost = (id) => {
     return async (dispatch) => {
         try {

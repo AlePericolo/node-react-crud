@@ -1,5 +1,5 @@
 export { isLoading } from "./load";
 
-export { findPosts, deletePost } from "./post";
+export { findPosts, deletePost, getPost } from "./post";
 
 export { hideModal, showModal } from "./modal"
