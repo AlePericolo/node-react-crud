@@ -5,6 +5,7 @@ const initialState = {
         isLoading: false
     },
     post: {
+        post: null,
         list: []
     },
     modal: {
@@ -33,6 +34,11 @@ const post = (state = initialState.post, action) => {
             return {
                 ...state,
                 list: action.payload,
+            };
+        case actionTypes.SET_POST:
+            return {
+                ...state,
+                post: action.payload,
             };
         default:
             return state;

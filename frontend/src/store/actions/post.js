@@ -1,12 +1,21 @@
 import * as actionTypes from "./actionTypes";
 import axios from "./_axios";
 
+import { isNil } from "lodash";
+
 import { isLoading } from "./load"
 import { showModal, hideModal } from "./modal"
 
 export const setPosts = (payload) => {
     return {
         type: actionTypes.SET_POSTS,
+        payload
+    }
+}
+
+export const setPost = (payload) => {
+    return {
+        type: actionTypes.SET_POST,
         payload
     }
 }
@@ -32,7 +41,8 @@ export const getPost = (id) => {
     return async (dispatch) => {
         try {
             const response = await axios.post("get-post", { 'id': id });
-            console.log("getpost => ", response);
+            if (response.status === 200 && !isNil(response.data))
+                dispatch(setPost(response.data));
         } catch (e) {
             console.log('Exception getPost', e);
         }
