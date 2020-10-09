@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { showModal, hideModal, deletePost, findPosts } from '../../store/actions/';
 
+import { Link } from "react-router-dom";
 import ModalRoot from '../../containers/modal';
 import Loader from 'react-loader-spinner';
 import { BsFillEyeFill, BsPencil, BsFillTrashFill } from "react-icons/bs";
@@ -11,13 +12,6 @@ class List extends Component {
 
     componentDidMount() {
         this.props.findPosts()
-    }
-
-    showPost = (post) => {
-        this.props.history.push({
-            pathname: '/post/show',
-            id: post._id
-        })
     }
 
     editPost = (post) => {
@@ -35,6 +29,7 @@ class List extends Component {
     }
 
     render() {
+
         if (this.props.isLoading)
             return (
                 <div className="loader">
@@ -43,7 +38,6 @@ class List extends Component {
             )
 
         return (
-
             <>
                 <div className="container py-5">
                     <h1>Posts</h1>
@@ -62,9 +56,11 @@ class List extends Component {
                                             <tr key={item._id}>
                                                 <td>{item.title}</td>
                                                 <td className="text-right">
-                                                    <button type="button" className="btn btn-sm btn-outline-info" onClick={() => this.showPost(item)}>
-                                                        <BsFillEyeFill />
-                                                    </button>
+                                                    <Link to={`/post/show/${item._id}`}>
+                                                        <button type="button" className="btn btn-sm btn-outline-info">
+                                                            <BsFillEyeFill />
+                                                        </button>
+                                                    </Link>
                                                     <button type="button" className="btn btn-sm btn-outline-warning mx-3" >
                                                         <BsPencil />
                                                     </button>
@@ -82,7 +78,6 @@ class List extends Component {
                 </div>
                 <ModalRoot hideModal={this.props.hideModal} />
             </>
-
         );
     }
 };
@@ -98,8 +93,8 @@ const mapDispatchToProps = (dispatch) => {
     return {
         hideModal: () => dispatch(hideModal()),
         showModal: (modalProps, modalType) => dispatch(showModal({ modalProps, modalType })),
-        deletePost: (id) => dispatch(deletePost(id)),
-        findPosts: () => dispatch(findPosts())
+        findPosts: () => dispatch(findPosts()),
+        deletePost: (id) => dispatch(deletePost(id))
     };
 };
 
