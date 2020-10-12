@@ -6,7 +6,8 @@ import { default as modalTypes } from '../components/modal'
 
 const MODAL_TYPES = {
     'alert': modalTypes.alertModal,
-    'delete': modalTypes.deleteModal
+    'delete': modalTypes.deleteModal,
+    'success': modalTypes.successeModal
 }
 
 class ModalContainer extends React.Component {
@@ -48,6 +49,8 @@ class ModalContainer extends React.Component {
                     ariaHideApp={false}
                     bodyOpenClassName="modal-open"
                     className="modal-dialog"
+                    shouldCloseOnOverlayClick={false}
+                    shouldCloseOnEsc={false}
                 >
                     <Modal
                         closeModal={this.closeModal}

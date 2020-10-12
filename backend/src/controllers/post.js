@@ -14,7 +14,6 @@ exports.getPost = (req, res) => {
     Post.findById(req.body.id, (err, data) => {
         if (err) return res.status(500).send(err.message);
 
-        console.log(data);
         return res.status(200).send(data);
     })
 }
@@ -27,13 +26,20 @@ exports.deletePost = (req, res) => {
     });
 }
 
-exports.createPost = (req, res) => {
-    const post = new Post(req.body);
-    post.save((err, result) => {
-        if (err) {
-            return res.status(400).json({ error: err })
-        }
-        res.status(200).json({ data: result })
-    })
+exports.savePost = (req, res) => {
+
+    if (req.body.id)
+        Post.findByIdAndUpdate({ _id: req.body.id }, req.body, (err, data) => {
+            if (err) return res.status(500).send(err.message);
+
+            return res.status(200).send(data);
+        })
+    Post.create(req.body, (err, data) => {
+        if (err)
+            return res.status(500).send(err.message);
+
+        return res.status(200).send(data);
+    });
+
 }
 

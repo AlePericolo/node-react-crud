@@ -20,6 +20,20 @@ export const setPost = (payload) => {
     }
 }
 
+export const setDelete = (payload) => {
+    return {
+        type: actionTypes.SET_DELETE,
+        payload
+    }
+}
+
+export const setSave = (payload) => {
+    return {
+        type: actionTypes.SET_SAVE,
+        payload
+    }
+}
+
 export const findPosts = () => {
     return async (dispatch) => {
         dispatch(isLoading(true));
@@ -49,29 +63,34 @@ export const getPost = (id) => {
     }
 }
 
-export const deletePost = (id) => {
+export const deletePost = (id, list = true) => {
     return async (dispatch) => {
         try {
             const response = await axios.post("delete-post", { 'id': id });
             if (response.status === 200) {
                 dispatch(hideModal())
-                dispatch(findPosts())
+                list ? dispatch(findPosts()) : dispatch(setDelete(true))
             } else {
-                dispatch(showModal({
-                    open: true,
-                    title: 'Attention',
-                    message: 'Post not deleted',
-                    closeModal: () => hideModal()
-                }, 'alert'));
+                console.log("POST NOT DELETED: ", response);
             }
         } catch (e) {
             console.log('Exception deletePost', e);
-            dispatch(showModal({
-                open: true,
-                title: 'Warning',
-                message: e.toString(),
-                closeModal: () => hideModal()
-            }, 'alert'));
+
+        }
+    };
+}
+
+export const savePost = (values) => {
+    return async (dispatch) => {
+        try {
+            const response = await axios.post("save-post", values);
+            if (response.status === 200 && response.data._id) {
+                dispatch(setSave(true));
+            } else {
+                console.log("POST NOT SAVED: ", response);
+            }
+        } catch (e) {
+            console.log('Exception savePost', e);
         }
     };
 }

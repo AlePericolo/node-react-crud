@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-import { showModal, hideModal, deletePost, findPosts } from '../../store/actions/';
+import { showModal, hideModal, findPosts, deletePost } from '../../store/actions/';
 
 import { Link } from "react-router-dom";
 import ModalRoot from '../../containers/modal';
 import Loader from 'react-loader-spinner';
-import { BsFillEyeFill, BsPencil, BsFillTrashFill } from "react-icons/bs";
+import { BsFillEyeFill, BsPencil, BsFillTrashFill, BsPlus } from "react-icons/bs";
 
 
 class List extends Component {
@@ -40,7 +40,16 @@ class List extends Component {
         return (
             <>
                 <div className="container py-5">
-                    <h1>Posts</h1>
+                    <div className="row">
+                        <div className="col-10"><h1>Posts</h1></div>
+                        <div className="col-2">
+                            <Link to="/post/create/">
+                                <button type="button" className="btn btn-outline-dark float-right">
+                                    <BsPlus />
+                                </button>
+                            </Link>
+                        </div>
+                    </div>
                     <div className="row">
                         <div className="col">
                             <table className="table table-sm table-hover">

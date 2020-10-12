@@ -14,8 +14,8 @@ const postRoutes = [
     },
     {
         method: 'POST',
-        url: '/post',
-        handler: postController.createPost
+        url: '/save-post',
+        handler: postController.savePost
     },
     {
         method: 'POST',

@@ -1,9 +1,11 @@
 import alertModal from './alertModal'
 import deleteModal from './deleteModal'
+import successeModal from './successModal'
 
 const modalTypes = {
     alertModal,
-    deleteModal
+    deleteModal,
+    successeModal
 }
 
 export default modalTypes

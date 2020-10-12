@@ -6,6 +6,8 @@ const initialState = {
     },
     post: {
         post: null,
+        isDeleted: false,
+        isSaved: false,
         list: []
     },
     modal: {
@@ -39,6 +41,16 @@ const post = (state = initialState.post, action) => {
             return {
                 ...state,
                 post: action.payload,
+            };
+        case actionTypes.SET_DELETE:
+            return {
+                ...state,
+                isDeleted: action.payload,
+            };
+        case actionTypes.SET_SAVE:
+            return {
+                ...state,
+                isSaved: action.payload,
             };
         default:
             return state;

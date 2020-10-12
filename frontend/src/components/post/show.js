@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { showModal, hideModal, deletePost, getPost } from '../../store/actions/'
+import { showModal, hideModal, getPost, deletePost, setDelete } from '../../store/actions/'
 
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import ModalRoot from '../../containers/modal';
 import Loader from 'react-loader-spinner';
 import { BsArrowLeft, BsPencil, BsFillTrashFill } from "react-icons/bs";
@@ -15,7 +15,26 @@ class Show extends Component {
         this.props.getPost(this.props.match.params.id)
     }
 
+    editPost = (post) => {
+        console.log(post);
+    }
+
+    deletePost = () => {
+        this.props.showModal({
+            open: true,
+            title: 'Delete Post',
+            message: `Are you sure you want to delete "${this.props.post.title}"?`,
+            closeModal: () => this.props.hideModal(),
+            deleteAction: () => { this.props.deletePost(this.props.post._id) }
+        }, 'delete');
+    }
+
     render() {
+
+        if (this.props.isDeleted) {
+            this.props.setDelete(false);
+            return <Redirect to="/post/" />
+        }
 
         if (isNil(this.props.post))
             return (
@@ -43,7 +62,7 @@ class Show extends Component {
                             <button type="button" className="btn btn-outline-warning mx-3" >
                                 <BsPencil />
                             </button>
-                            <button type="button" className="btn btn-outline-danger" >
+                            <button type="button" className="btn btn-outline-danger" onClick={() => this.deletePost()}>
                                 <BsFillTrashFill />
                             </button>
                         </div>
@@ -58,7 +77,8 @@ class Show extends Component {
 const mapStateToProps = (state) => {
     return {
         isLoading: state.load.isLoading,
-        post: state.post.post
+        post: state.post.post,
+        isDeleted: state.post.isDeleted
     }
 }
 
@@ -67,7 +87,8 @@ const mapDispatchToProps = (dispatch) => {
         hideModal: () => dispatch(hideModal()),
         showModal: (modalProps, modalType) => dispatch(showModal({ modalProps, modalType })),
         getPost: (id) => dispatch(getPost(id)),
-        deletePost: (id) => dispatch(deletePost(id))
+        deletePost: (id) => dispatch(deletePost(id, false)),
+        setDelete: (value) => dispatch(setDelete(value))
     }
 }
 
