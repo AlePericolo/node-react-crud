@@ -28,12 +28,13 @@ exports.deletePost = (req, res) => {
 
 exports.savePost = (req, res) => {
 
-    if (req.body.id)
-        Post.findByIdAndUpdate({ _id: req.body.id }, req.body, (err, data) => {
+    if (req.body._id)
+        Post.findByIdAndUpdate({ _id: req.body._id }, req.body, (err, data) => {
             if (err) return res.status(500).send(err.message);
 
             return res.status(200).send(data);
         })
+
     Post.create(req.body, (err, data) => {
         if (err)
             return res.status(500).send(err.message);

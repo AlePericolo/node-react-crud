@@ -14,10 +14,6 @@ class List extends Component {
         this.props.findPosts()
     }
 
-    editPost = (post) => {
-        console.log(post);
-    }
-
     deletePost = (post) => {
         this.props.showModal({
             open: true,
@@ -44,7 +40,7 @@ class List extends Component {
                         <div className="col-10"><h1>Posts</h1></div>
                         <div className="col-2">
                             <Link to="/post/create/">
-                                <button type="button" className="btn btn-outline-dark float-right">
+                                <button type="button" className="btn btn-outline-success float-right">
                                     <BsPlus />
                                 </button>
                             </Link>
@@ -65,12 +61,10 @@ class List extends Component {
                                             <tr key={item._id}>
                                                 <td>{item.title}</td>
                                                 <td className="text-right">
-                                                    <Link to={`/post/show/${item._id}`}>
-                                                        <button type="button" className="btn btn-sm btn-outline-info">
-                                                            <BsFillEyeFill />
-                                                        </button>
-                                                    </Link>
-                                                    <button type="button" className="btn btn-sm btn-outline-warning mx-3" >
+                                                    <button type="button" className="btn btn-sm btn-outline-info" onClick={() => this.props.history.push(`/post/show/${item._id}`)}>
+                                                        <BsFillEyeFill />
+                                                    </button>
+                                                    <button type="button" className="btn btn-sm btn-outline-warning mx-3" onClick={() => this.props.history.push(`/post/edit/${item._id}`)}>
                                                         <BsPencil />
                                                     </button>
                                                     <button type="button" className="btn btn-sm btn-outline-danger" onClick={() => this.deletePost(item)}>
