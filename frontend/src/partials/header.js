@@ -1,24 +1,20 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
 
-const header = () => {
+import { BsJustify } from "react-icons/bs";
 
+const Header = (props) => {
     return (
         <header>
-            <nav className="navbar navbar-default">
-                <div className="container-fluid">
-                    <div className="navbar-header">
-                        <NavLink className="navbar-brand" to="/">NodeJS API</NavLink>
-                    </div>
-                    <ul className="nav navbar-nav">
-                        <li>
-                            <NavLink to="/post/">Post</NavLink>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
+            <div className="container-fluid text-center py-2">
+                {!props.isMenuOpen &&
+                    <button className="btn btn-sm btn-outline-dark float-left" onClick={() => props.handleMenu()}>
+                        <BsJustify />
+                    </button>
+                }
+                Header
+            </div>
         </header>
     );
 };
 
-export default header;
+export default Header;
