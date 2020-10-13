@@ -7,7 +7,7 @@ const minLength = len => value => value && value.length >= len ? undefined : "er
 const minLength10 = minLength(10);
 const minLength5 = minLength(5);
 
-const equalValues = field => (value, allValues) => allValues[field] && value == allValues[field] ? undefined : 'error.form.equalValues';
+const equalValues = field => (value, allValues) => allValues[field] && value === allValues[field] ? undefined : 'error.form.equalValues';
 const equalPassword = equalValues('password');
 
 const date = format => value => value && moment(value, format).isValid() ? undefined : "error.form.dateIta"
