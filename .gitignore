@@ -2,4 +2,5 @@ backend/node_modules
 backend/src/db-data/
 backend/package-lock.json
 frontend/node_modules
+frontend/build/
 frontend/package-lock.json
