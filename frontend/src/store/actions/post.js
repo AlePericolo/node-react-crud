@@ -4,7 +4,7 @@ import axios from "./_axios";
 import { isNil } from "lodash";
 
 import { isLoading } from "./load"
-import { showModal, hideModal } from "./modal"
+import { hideModal } from "./modal"
 
 export const setPosts = (payload) => {
     return {
@@ -75,7 +75,6 @@ export const deletePost = (id, list = true) => {
             }
         } catch (e) {
             console.log('Exception deletePost', e);
-
         }
     };
 }
