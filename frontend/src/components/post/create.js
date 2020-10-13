@@ -3,11 +3,14 @@ import { connect } from 'react-redux'
 import { showModal, hideModal, savePost, setSave } from '../../store/actions/'
 
 import Form from './form';
-import { Link } from "react-router-dom";
 import ModalRoot from '../../containers/modal';
 import { BsArrowLeft } from "react-icons/bs";
 
 class Create extends Component {
+
+    goBack = () => {
+        this.props.history.push('/post/');
+    }
 
     savePost = (values) => {
         this.props.savePost(values);
@@ -33,12 +36,16 @@ class Create extends Component {
                 <div className="container py-5">
                     <div className="card border-dark mb-3">
                         <div className="card-header text-center">
-                            <Link to="/post/">
-                                <button type="button" className="btn btn-outline-dark float-left">
-                                    <BsArrowLeft />
-                                </button>
-                            </Link>
-                            New Post
+                            <div className="row">
+                                <div className="col-1">
+                                    <button type="button" className="btn btn-outline-dark" onClick={() => this.goBack()}>
+                                        <BsArrowLeft />
+                                    </button>
+                                </div>
+                                <div className="col-10">
+                                    <h3>New Post</h3>
+                                </div>
+                            </div>
                         </div>
                         <div className="card-body text-dark">
                             <Form onSubmit={this.savePost} />
