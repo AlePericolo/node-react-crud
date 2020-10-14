@@ -1,8 +1,9 @@
-import React, { Component } from "react";
+import React from "react";
 import { Route, Switch } from 'react-router-dom';
 
 import Layout from "./containers/layout";
-import Dashboard from "./containers/dashboard";
+import Dashboard from "./page/dashboard";
+import Error from "./page/error";
 
 import postRoutes from "./routes/post";
 
@@ -18,6 +19,7 @@ const App = () => {
       <Switch>
         {postRoutes}
         <Route path="/" exact render={(props) => <Dashboard {...props} menu={menu} />} />
+        <Route component={Error} />
       </Switch>
     </Layout>
   );
