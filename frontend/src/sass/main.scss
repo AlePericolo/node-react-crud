@@ -1,8 +1,10 @@
+@import "./theme/_variables";
+
 @import "~bootstrap/scss/bootstrap.scss";
 @import "~react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
+@import "./pages/error";
+@import "./containers//layout";
+@import "./partials/sidebar";
+@import "./components/loader";
 
-@import "./layout";
-@import "./sidebar";
-@import "./loader";
-@import "./error";

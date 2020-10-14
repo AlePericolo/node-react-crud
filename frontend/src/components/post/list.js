@@ -2,9 +2,8 @@ import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { showModal, hideModal, findPosts, deletePost } from '../../store/actions/';
 
-import { Link } from "react-router-dom";
+import Spinner from "../spinner";
 import ModalRoot from '../../containers/modal';
-import Loader from 'react-loader-spinner';
 import { BsFillEyeFill, BsPencil, BsFillTrashFill, BsPlus } from "react-icons/bs";
 
 
@@ -26,12 +25,7 @@ class List extends Component {
 
     render() {
 
-        if (this.props.isLoading)
-            return (
-                <div className="loader">
-                    <Loader type="Puff" color="#00BFFF" height={200} width={200} />
-                </div>
-            )
+        if (this.props.isLoading) return <Spinner />
 
         return (
             <>
@@ -39,11 +33,9 @@ class List extends Component {
                     <div className="row">
                         <div className="col-10"><h1>Posts</h1></div>
                         <div className="col-2">
-                            <Link to="/post/create/">
-                                <button type="button" className="btn btn-outline-success float-right">
-                                    <BsPlus />
-                                </button>
-                            </Link>
+                            <button type="button" className="btn btn-outline-success float-right" onClick={() => this.props.history.push("/post/create/")}>
+                                <BsPlus />
+                            </button>
                         </div>
                     </div>
                     <div className="row">

@@ -2,8 +2,8 @@ import React from "react";
 import { Route, Switch } from 'react-router-dom';
 
 import Layout from "./containers/layout";
-import Dashboard from "./page/dashboard";
-import Error from "./page/error";
+import Dashboard from "./pages/dashboard";
+import Error from "./pages/error";
 
 import postRoutes from "./routes/post";
 

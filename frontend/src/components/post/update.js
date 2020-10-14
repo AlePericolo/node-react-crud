@@ -3,9 +3,10 @@ import { connect } from 'react-redux'
 import { showModal, hideModal, getPost, setPost, savePost, setSave, deletePost, setDelete } from '../../store/actions/'
 
 import Form from './form';
+import Spinner from "../spinner";
 import ModalRoot from '../../containers/modal';
-import Loader from 'react-loader-spinner';
 import { BsArrowLeft, BsFillTrashFill } from "react-icons/bs";
+
 import { isNil } from 'lodash';
 
 class Update extends Component {
@@ -37,6 +38,7 @@ class Update extends Component {
 
         if (this.props.isDeleted) {
             this.props.setDelete(false);
+            this.props.setPost(null);
             this.props.history.push('/post/');
         }
 
@@ -52,12 +54,7 @@ class Update extends Component {
             }, 'success');
         }
 
-        if (isNil(this.props.post))
-            return (
-                <div className="loader">
-                    <Loader type="Puff" color="#00BFFF" height={200} width={200} />
-                </div>
-            )
+        if (isNil(this.props.post)) return <Spinner />
 
         return (
             <>

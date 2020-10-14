@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { showModal, hideModal, getPost, setPost, deletePost, setDelete } from '../../store/actions/'
 
+import Spinner from "../spinner";
 import ModalRoot from '../../containers/modal';
-import Loader from 'react-loader-spinner';
 import { BsArrowLeft, BsPencil, BsFillTrashFill } from "react-icons/bs";
+
 import { isNil } from 'lodash';
 
 class Show extends Component {
@@ -35,12 +36,7 @@ class Show extends Component {
             this.props.history.push('/post/');
         }
 
-        if (isNil(this.props.post))
-            return (
-                <div className="loader">
-                    <Loader type="Puff" color="#00BFFF" height={200} width={200} />
-                </div>
-            )
+        if (isNil(this.props.post)) return <Spinner />
 
         return (
             <>
