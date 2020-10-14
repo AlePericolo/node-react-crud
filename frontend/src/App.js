@@ -6,20 +6,22 @@ import Dashboard from "./containers/dashboard";
 
 import postRoutes from "./routes/post";
 
-class App extends Component {
+const App = () => {
 
-  render() {
-    return (
-      <div>
-        <Layout>
-          <Switch>
-            {postRoutes}
-            <Route path="/" exact component={Dashboard} />
-          </Switch>
-        </Layout>
-      </div>
-    );
-  }
+  const menu = [
+    { name: "home", path: "/" },
+    { name: "post", path: "/post/" }
+  ];
+
+  return (
+    <Layout menu={menu}>
+      <Switch>
+        {postRoutes}
+        <Route path="/" exact render={(props) => <Dashboard {...props} menu={menu} />} />
+      </Switch>
+    </Layout>
+  );
+
 }
 
 export default App;

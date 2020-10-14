@@ -2,12 +2,19 @@ import React from "react";
 
 import { slide as Menu } from 'react-burger-menu'
 
-const Sidebar = () => {
+const Sidebar = (props) => {
+
     return (
         <div className="sidebar">
             <Menu disableAutoFocus>
-                <a id="home" className="menu-item" href="/">Home</a>
-                <a id="post" className="menu-item" href="/post/">Post</a>
+                {props.menu.map((element, index) => {
+                    return (
+                        <a id={element.name} className="menu-item" href={element.path} key={index}>
+                            {element.name}
+                        </a>
+                    )
+                })
+                }
             </Menu>
         </div>
     );

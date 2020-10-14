@@ -9,7 +9,7 @@ const Layout = (props) => {
     return (
         <div className="container-fluid">
             <div className="row">
-                <Sidebar />
+                <Sidebar menu={props.menu} />
                 <div className='col'>
                     <Header />
                     <main role="main">{props.children}</main>

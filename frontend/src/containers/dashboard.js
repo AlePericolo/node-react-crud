@@ -1,21 +1,26 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const dashboard = () => {
+const Dashboard = (props) => {
 
     return (
         <div className="container py-5">
-            <div className="col-4">
-                <div className="card bg-light">
-                    <div className="card-header text-center">Post</div>
-                    <div className="card-body text-center">
-                        <h5 className="card-text">List of posts</h5>
-                        <Link to="/post/"><p className="btn btn-sm btn-dark">show all</p></Link>
+            {props.menu.map((element, index) => {
+                if (element.path === '/') return null;
+                return (
+                    <div className="col-4" key={index}>
+                        <div className="card bg-light">
+                            <div className="card-header text-center">{element.name}</div>
+                            <div className="card-body text-center">
+                                <Link to={element.path} ><p className="btn btn-sm btn-dark">show</p></Link>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
+                )
+            })
+            }
         </div>
     );
 };
 
-export default dashboard;
+export default Dashboard;
