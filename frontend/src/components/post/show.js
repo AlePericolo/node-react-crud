@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { showModal, hideModal, getPost, setPost, deletePost, setDelete } from '../../store/actions/'
 
-import Spinner from "../spinner";
+import Spinner from "../ui/spinner";
+import Icon from "../ui/icon";
 import ModalRoot from '../../containers/modal';
-import { BsArrowLeft, BsPencil, BsFillTrashFill } from "react-icons/bs";
 
 import { isNil } from 'lodash';
 
@@ -46,7 +46,7 @@ class Show extends Component {
                             <div className="row">
                                 <div className="col-1">
                                     <button type="button" className="btn btn-outline-dark" onClick={() => this.goBack()}>
-                                        <BsArrowLeft />
+                                        <Icon icon="arrow-left" />
                                     </button>
                                 </div>
                                 <div className="col-10">
@@ -54,7 +54,7 @@ class Show extends Component {
                                 </div>
                                 <div className="col-1 text-right">
                                     <button type="button" className="btn btn-outline-danger" onClick={() => this.deletePost()}>
-                                        <BsFillTrashFill />
+                                        <Icon icon="trash" />
                                     </button>
                                 </div>
                             </div>
@@ -64,7 +64,7 @@ class Show extends Component {
                         </div>
                         <div className="card-footer text-center">
                             <button type="button" className="btn btn-outline-warning mx-3" onClick={() => this.props.history.push(`/post/edit/${this.props.post._id}`)}>
-                                <BsPencil />
+                                <Icon icon="pen" />
                             </button>
                         </div>
                     </div>

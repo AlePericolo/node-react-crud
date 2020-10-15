@@ -3,7 +3,8 @@ import { Field, reduxForm } from "redux-form";
 
 import { renderInputField, renderTextArea } from "../form/render";
 import { required } from "../form/validate";
-import { BsFileEarmarkCheck, BsArrowRepeat } from "react-icons/bs";
+import Icon from "../ui/icon";
+
 
 const Form = (props) => {
 
@@ -16,10 +17,10 @@ const Form = (props) => {
             <div className="row">
                 <div className="col text-center">
                     <button type="submit" className="btn btn-outline-success mx-2" disabled={pristine || submitting}>
-                        <BsFileEarmarkCheck />
+                        <Icon icon="save" />
                     </button>
                     <button type="button" className="btn btn-outline-dark mx-2" disabled={pristine || submitting} onClick={reset}>
-                        <BsArrowRepeat />
+                        <Icon icon="sync" />
                     </button>
                 </div>
             </div>

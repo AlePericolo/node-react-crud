@@ -4,7 +4,7 @@ import { showModal, hideModal, savePost, setSave } from '../../store/actions/'
 
 import Form from './form';
 import ModalRoot from '../../containers/modal';
-import { BsArrowLeft } from "react-icons/bs";
+import Icon from "../ui/icon";
 
 class Create extends Component {
 
@@ -39,7 +39,7 @@ class Create extends Component {
                             <div className="row">
                                 <div className="col-1">
                                     <button type="button" className="btn btn-outline-dark" onClick={() => this.goBack()}>
-                                        <BsArrowLeft />
+                                        <Icon icon="arrow-left" />
                                     </button>
                                 </div>
                                 <div className="col-10">

@@ -2,10 +2,9 @@ import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { showModal, hideModal, findPosts, deletePost } from '../../store/actions/';
 
-import Spinner from "../spinner";
+import Spinner from "../ui/spinner";
+import Icon from "../ui/icon";
 import ModalRoot from '../../containers/modal';
-import { BsFillEyeFill, BsPencil, BsFillTrashFill, BsPlus } from "react-icons/bs";
-
 
 class List extends Component {
 
@@ -34,7 +33,7 @@ class List extends Component {
                         <div className="col-10"><h1>Posts</h1></div>
                         <div className="col-2">
                             <button type="button" className="btn btn-outline-success float-right" onClick={() => this.props.history.push("/post/create/")}>
-                                <BsPlus />
+                                <Icon icon="plus" />
                             </button>
                         </div>
                     </div>
@@ -54,13 +53,13 @@ class List extends Component {
                                                 <td>{item.title}</td>
                                                 <td className="text-right">
                                                     <button type="button" className="btn btn-sm btn-outline-info" onClick={() => this.props.history.push(`/post/show/${item._id}`)}>
-                                                        <BsFillEyeFill />
+                                                        <Icon icon="eye" />
                                                     </button>
                                                     <button type="button" className="btn btn-sm btn-outline-warning mx-3" onClick={() => this.props.history.push(`/post/edit/${item._id}`)}>
-                                                        <BsPencil />
+                                                        <Icon icon="pen" />
                                                     </button>
                                                     <button type="button" className="btn btn-sm btn-outline-danger" onClick={() => this.deletePost(item)}>
-                                                        <BsFillTrashFill />
+                                                        <Icon icon="trash" />
                                                     </button>
                                                 </td>
                                             </tr>

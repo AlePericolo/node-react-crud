@@ -10,8 +10,8 @@ import postRoutes from "./routes/post";
 const App = () => {
 
   const menu = [
-    { name: "home", path: "/" },
-    { name: "post", path: "/post/" }
+    { name: "home", icon: "home", path: "/" },
+    { name: "post", icon: "newspaper", path: "/post/" }
   ];
 
   return (

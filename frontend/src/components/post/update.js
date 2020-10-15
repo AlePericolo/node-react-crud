@@ -3,9 +3,9 @@ import { connect } from 'react-redux'
 import { showModal, hideModal, getPost, setPost, savePost, setSave, deletePost, setDelete } from '../../store/actions/'
 
 import Form from './form';
-import Spinner from "../spinner";
+import Spinner from "../ui/spinner";
+import Icon from "../ui/icon";
 import ModalRoot from '../../containers/modal';
-import { BsArrowLeft, BsFillTrashFill } from "react-icons/bs";
 
 import { isNil } from 'lodash';
 
@@ -64,7 +64,7 @@ class Update extends Component {
                             <div className="row">
                                 <div className="col-1">
                                     <button type="button" className="btn btn-outline-dark" onClick={() => this.goBack()}>
-                                        <BsArrowLeft />
+                                        <Icon icon="arrow-left" />
                                     </button>
                                 </div>
                                 <div className="col-10">
@@ -72,7 +72,7 @@ class Update extends Component {
                                 </div>
                                 <div className="col-1 text-right">
                                     <button type="button" className="btn btn-outline-danger" onClick={() => this.deletePost()}>
-                                        <BsFillTrashFill />
+                                        <Icon icon="trash" />
                                     </button>
                                 </div>
                             </div>

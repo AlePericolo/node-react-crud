@@ -1,5 +1,6 @@
 import React from "react";
-import { Link } from "react-router-dom";
+
+import Icon from "../components/ui/icon"
 
 const Dashboard = (props) => {
 
@@ -12,7 +13,10 @@ const Dashboard = (props) => {
                         <div className="card bg-light">
                             <div className="card-header text-center">{element.name}</div>
                             <div className="card-body text-center">
-                                <Link to={element.path} ><p className="btn btn-sm btn-dark">show</p></Link>
+                                <button className="btn btn-sm btn-dark" onClick={() => props.history.push(element.path)}>
+                                    <span className="mr-3">show</span>
+                                    <Icon icon={element.icon} />
+                                </button>
                             </div>
                         </div>
                     </div>
