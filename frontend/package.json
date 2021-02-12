@@ -1,8 +1,11 @@
 {
-  "name": "frontend",
+  "name": "post-app",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@babel/core": "^7.12.16",
+    "@babel/preset-env": "^7.12.16",
+    "@babel/preset-react": "^7.12.13",
     "@fortawesome/fontawesome-svg-core": "^1.2.32",
     "@fortawesome/free-regular-svg-icons": "^5.15.1",
     "@fortawesome/free-solid-svg-icons": "^5.15.1",
@@ -11,9 +14,14 @@
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
     "axios": "^0.20.0",
+    "babel-loader": "^8.2.2",
     "bootstrap": "^4.5.2",
     "classnames": "^2.2.6",
+    "css-loader": "^5.0.2",
+    "html-webpack-plugin": "^5.1.0",
+    "html-webpack-template": "^6.2.0",
     "lodash": "^4.17.20",
+    "mini-css-extract-plugin": "^1.3.6",
     "moment": "^2.29.1",
     "react": "^16.13.1",
     "react-burger-menu": "^2.8.0",
@@ -27,13 +35,18 @@
     "redux-form": "^8.3.6",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
-    "sass": "^1.26.11"
+    "sass": "^1.26.11",
+    "style-loader": "^2.0.0",
+    "terser-webpack-plugin": "^5.1.1",
+    "webpack": "^5.21.2",
+    "webpack-cli": "^4.5.0"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "webpack": "webpack --mode development"
   },
   "eslintConfig": {
     "extends": "react-app"

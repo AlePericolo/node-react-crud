@@ -8,3 +8,7 @@
 @import "./partials/sidebar";
 @import "./components/loader";
 
+html,
+body {
+	scroll-behavior: smooth;
+}

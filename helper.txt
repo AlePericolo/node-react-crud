@@ -3,3 +3,7 @@ cd backend/
 	- node index.js
 cd frontend/
 	- npm start
+
+
+npm run webpack
+docker run -it --rm -d -p 8010:80 --name post-app -v $(pwd)/build:/usr/share/nginx/html:ro nginx
